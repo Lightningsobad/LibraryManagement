@@ -4,7 +4,7 @@ package data;
  *
  * @author quang
  */
-public class Book {
+public class Book  {
 
     private String id;
     private String title;

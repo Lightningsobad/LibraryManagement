@@ -109,4 +109,15 @@ public class Shelf {
         }
 
     }
+
+    public void sortBooksByTittle() {
+        SortByTitle st = new SortByTitle();
+        Collections.sort(arr, st);
+    }
+
+    public void sortBooksByPrice() {
+        SortByPrice sp = new SortByPrice();
+        Collections.sort(arr, sp);
+        
+    }
 }
