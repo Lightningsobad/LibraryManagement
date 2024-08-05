@@ -16,17 +16,26 @@ public class Shelf {
         String title;
         String author;
         double price;
-        System.out.println("Thêm cuốn sách thứ #" + (arr.size() + 1) + ":");
-        System.out.print("Nhập mã sách: ");
-        id = sc.nextLine();
-        System.out.print("Nhập tiêu đề: ");
-        title = sc.nextLine();
-        System.out.print("Nhập tác giả: ");
-        author = sc.nextLine();
-        System.out.print("Nhập giá tiền: ");
-        price = Double.parseDouble(sc.nextLine());
-        arr.add(new Book(id, title, author, price));   //nhập xong ném vào trong giỏ    
-        System.out.println("Thêm thành công!");
+        while (true) {
+            try {
+                System.out.println("Thêm cuốn sách thứ #" + (arr.size() + 1) + ":");
+                System.out.print("Nhập mã sách: ");
+                id = sc.nextLine();
+                System.out.print("Nhập tiêu đề: ");
+                title = sc.nextLine();
+                System.out.print("Nhập tác giả: ");
+                author = sc.nextLine();
+                System.out.print("Nhập giá tiền: ");
+                price = Double.parseDouble(sc.nextLine());
+                arr.add(new Book(id, title, author, price));   //nhập xong ném vào trong giỏ    
+                System.out.println("Thêm thành công!");
+                break;
+            } catch (InputMismatchException | NumberFormatException e) {
+                System.out.println("Thông tin nhập không hợp lệ, vui lòng nhập lại!");
+            }
+
+        }
+
     }
 
     private Book searchABook(String id) {
@@ -44,7 +53,6 @@ public class Shelf {
         }
         return null;
     }
-
     public void printBookList() {
         if (arr.isEmpty()) {
             System.out.println("Danh sách rỗng, chưa có cuốn sách nào được thêm");
@@ -69,7 +77,9 @@ public class Shelf {
             System.out.println("Đây là sách bạn muốn tìm: ");
             b1.printData();
         }
-    }
+        
+        }
+    
 
     public void updateABook() {
         String id;
@@ -81,18 +91,27 @@ public class Shelf {
         } else {
             System.out.println("Đây là sách bạn muốn sửa: ");
             b1.printData();
-            System.out.println("Mời sửa thông tin của sách: ");
-            System.out.print("Mã sách: ");
-            b1.setId(sc.nextLine());
-            System.out.print("Tiêu đề: ");
-            b1.setTitle(sc.nextLine());
-            System.out.print("Tác giả: ");
-            b1.setAuthor(sc.nextLine());
-            System.out.print("Giá: ");
-            b1.setPrice(Double.parseDouble(sc.nextLine()));
-            System.out.println("Chỉnh sửa thành công!");
-            System.out.println("Thông tin của sách sau khi chỉnh sửa:");
-            b1.printData();
+            while (true) {
+                try {
+                    System.out.println("Mời sửa thông tin của sách: ");
+                    System.out.print("Mã sách: ");
+                    b1.setId(sc.nextLine());
+                    System.out.print("Tiêu đề: ");
+                    b1.setTitle(sc.nextLine());
+                    System.out.print("Tác giả: ");
+                    b1.setAuthor(sc.nextLine());
+                    System.out.print("Giá: ");
+                    b1.setPrice(Double.parseDouble(sc.nextLine()));
+                    System.out.println("Chỉnh sửa thành công!");
+                    System.out.println("Thông tin của sách sau khi chỉnh sửa:");
+                    b1.printData();
+                    break;
+                } catch (InputMismatchException | NumberFormatException e) {
+                    System.out.println("Chương trình có lỗi: " + e.toString());
+                }
+
+            }
+
         }
     }
 
@@ -118,6 +137,7 @@ public class Shelf {
     public void sortBooksByPrice() {
         SortByPrice sp = new SortByPrice();
         Collections.sort(arr, sp);
-        
     }
+    
+
 }

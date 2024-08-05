@@ -13,12 +13,19 @@ public class LibraryManagement {
     private static Shelf sh = new Shelf();
 
     public static void main(String[] args) {
-        
+
         int choice;
         do {
             printMenu();
-            System.out.print("Mời nhập lựa chọn của bạn: ");
-            choice = sc.nextInt();
+            while(1 < 2){
+                try {
+                System.out.print("Mời nhập lựa chọn của bạn: ");
+                choice = Integer.parseInt(sc.nextLine());
+                break; 
+            } catch (InputMismatchException | NumberFormatException e) {
+                    System.out.println("Vui lòng nhập lại, lựa chọn phải là một số, không bao gồm chữ và các kí hiệu đặc biệt!");
+            } 
+            }        
             switch (choice) {
                 case 1:
                     sh.addABook();
